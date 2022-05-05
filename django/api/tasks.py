@@ -62,13 +62,18 @@ def send_email(
 
 def send_individual_confirm(recipient_email, application_id):
     message = """
-        We have received your application for a rebate under the CleanBC Go Electric Passenger Vehicle Rebate program.
+        <html>
+        <body>
+        <p>We have received your application for a rebate under the CleanBC Go
+        Electric Passenger Vehicle Rebate program.</p>
 
-        Please keep this e-mail for your records.
+         <p>Please keep this e-mail for your records.</p>
 
-        Questions?
+         <p>Questions?</p>
 
-        Please feel free to contact us at ZEVPrograms@gov.bc.ca
+         <p>Please feel free to contact us at ZEVPrograms@gov.bc.ca</p>
+        </body>
+        </html>
         """
     send_email(recipient_email, application_id, message, cc_list=[])
 
@@ -76,17 +81,24 @@ def send_individual_confirm(recipient_email, application_id):
 def send_spouse_initial_message(recipient_email, application_id, initiator_email):
     origin = settings.CORS_ORIGIN_WHITELIST[0]
     message = """
-        Dear Applicant,
+        <html>
+        <body>
+        <p>Dear Applicant,</p>
 
-        You are receiving this e-mail as you have been identified as a spouse under a household rebate application for the CleanBC Go Electric Light-Duty Vehicle program.
+        <p>You are receiving this e-mail as you have been identified as
+        a spouse under a household rebate application for the CleanBC Go
+        Electric Light-Duty Vehicle program.</p>
 
-        To finish the rebate application please click on the following link:
+        <p>To finish the rebate application please click on the
+        following link:</p>
 
-        {origin}/household?q={application_id}
+        <p>{origin}/household?q={application_id}</p>
 
-        Questions?
+        <p>Questions?</p>
 
-        Please feel free to contact us at ZEVPrograms@gov.bc.ca
+        <p>Please feel free to contact us at ZEVPrograms@gov.bc.ca</p>
+        </body>
+        </html>
         """.format(
         origin=origin, application_id=application_id
     )
@@ -95,14 +107,20 @@ def send_spouse_initial_message(recipient_email, application_id, initiator_email
 
 def send_household_confirm(recipient_email, application_id, initiator_email):
     message = """
-        Thank you.
+        <html>
+        <body>
+        <p>Thank you.</p>
 
-        We have now received all documentation for your application for a household rebate under the CleanBC Go Electric Passenger Vehicle Rebate program.
+        <p>We have now received all documentation for your application for a
+        household rebate under the CleanBC Go Electric Passenger Vehicle
+        Rebate program.</p>
 
-        Please keep this e-mail for your records.
+        <p>Please keep this e-mail for your records.</p>
 
-        Questions?
+        <p>Questions?</p>
 
-        Please feel free to contact us at ZEVPrograms@gov.bc.ca
+        <p>Please feel free to contact us at ZEVPrograms@gov.bc.ca</p>
+        </body>
+        </html>
         """
     send_email(recipient_email, application_id, message, [initiator_email])
